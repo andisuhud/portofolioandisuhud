@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andi Suhud | Graphic Design & Visual Consultant</title>
+    <meta name="description" content="Professional Portfolio and Services of Andi Suhud: Graphic Design, Program Consultant, and Visual Communication Products.">
+    
+    <!-- Google Fonts: Bricolage Grotesque (Headings) & Plus Jakarta Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable class-based dark mode
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            orange: '#FF6B00', // Dominant Orange
+                            dark: '#0A0A0A',   // Main dark background
+                            card: '#141414',   // Card/section background
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['"Bricolage Grotesque"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Theme initialization script (prevents styling flash on load) -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f3f4f6; } /* Light mode track */
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FF6B00; }
+        
+        /* Dark mode scrollbar */
+        .dark ::-webkit-scrollbar-track { background: #0A0A0A; }
+        .dark ::-webkit-scrollbar-thumb { background: #333; }
+        .dark ::-webkit-scrollbar-thumb:hover { background: #FF6B00; }
+
+        /* Subtle gradient text effect - Light Mode */
+        .text-gradient {
+            background: linear-gradient(to right, #111827, #6b7280);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Subtle gradient text effect - Dark Mode */
+        .dark .text-gradient {
+            background: linear-gradient(to right, #ffffff, #a3a3a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Mosaic Background Styles */
+        #mosaic-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            grid-auto-rows: 60px;
+            gap: 2px;
+            padding: 2px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .mosaic-item {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-color: #1a1a1a;
+            cursor: crosshair;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                        filter 0.4s ease, 
+                        box-shadow 0.4s ease,
+                        opacity 0.4s ease;
+            z-index: 1;
+            /* Tampilan awal: sedikit transparan dan abu-abu agar tidak menutupi teks */
+            opacity: 0.5;
+            filter: grayscale(60%) brightness(0.9);
+        }
+
+        .dark .mosaic-item {
+            opacity: 0.4;
+            filter: grayscale(80%) brightness(0.6);
+        }
+
+        .mosaic-item:hover {
+            transform: scale(1.6) translateY(-8px); 
+            filter: grayscale(0%) brightness(1.2); 
+            opacity: 1 !important;
+            z-index: 10; 
+            border-radius: 4px; 
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+        }
+        
+        /* Tambahan glow warna oranye saat hover di mode gelap */
+        .dark .mosaic-item:hover {
+            box-shadow: 0 12px 24px rgba(255, 107, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 dark:bg-brand-dark dark:text-white font-sans antialiased overflow-x-hidden selection:bg-brand-orange selection:text-white transition-colors duration-300">
+
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-white/80 border-b border-gray-200 dark:bg-brand-dark/80 dark:border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Text Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="andiicon.png" alt="Andi Suhud" class="w-10 h-10 rounded-full mr-3 border border-brand-orange/50 object-cover">
+                    <span class="font-heading font-extrabold text-2xl tracking-tighter uppercase text-gray-900 dark:text-white hover:text-brand-orange dark:hover:text-brand-orange transition-colors">ANDI SUHUD</span>
+                </div>
+
+                <!-- Right side controls -->
+                <div class="flex items-center gap-2 sm:gap-6">
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-brand-orange dark:hover:text-brand-orange transition-colors font-medium text-sm tracking-wide">SERVICES</a>
+                        <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-brand-orange dark:hover:text-brand-orange transition-colors font-medium text-sm tracking-wide">ABOUT</a>
+                        <a href="#contact" class="bg-brand-orange text-black px-6 py-2.5 rounded-full font-bold text-sm hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all transform hover:scale-105">Get in Touch</a>
+                    </div>
+
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full focus:outline-none transition-colors">
+                        <i id="theme-toggle-dark-icon" class="fas fa-moon text-xl hidden"></i>
+                        <i id="theme-toggle-light-icon" class="fas fa-sun text-xl hidden"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 hover:text-brand-orange dark:hover:text-white focus:outline-none p-2">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-brand-card border-b border-gray-200 dark:border-white/10">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col items-center">
+                <a href="#services" class="mobile-link block w-full text-center py-3 text-gray-600 dark:text-gray-300 hover:text-brand-orange font-medium">Services</a>
+                <a href="#about" class="mobile-link block w-full text-center py-3 text-gray-600 dark:text-gray-300 hover:text-brand-orange font-medium">About</a>
+                <a href="#contact" class="mobile-link mt-4 inline-block bg-brand-orange text-black px-8 py-3 rounded-full font-bold w-full text-center">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center justify-center text-center">
+        
+        <!-- Container Mozaik Interaktif -->
+        <div class="absolute inset-0 z-0">
+            <div id="mosaic-container"></div>
+        </div>
+        
+        <!-- Gradient Overlay: Memastikan teks tetap terbaca dengan jelas di atas mozaik -->
+        <!-- pointer-events-none: Memastikan kursor mouse tembus melewati overlay ini dan mengenai mozaik -->
+        <div class="absolute inset-0 bg-white/60 dark:bg-brand-dark/65 z-0 pointer-events-none transition-colors duration-300"></div>
+        
+        <!-- Wrapper Konten Utama -->
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pointer-events-none">
+            <div class="flex flex-col items-center">
+                <div class="w-full pointer-events-auto">
+                    <!-- Updated Prestige Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-orange/50 bg-brand-orange/10 text-brand-orange text-sm font-semibold mb-8 tracking-wider shadow-[0_0_15px_rgba(255,107,0,0.2)]">
+                        <i class="fas fa-award text-base"></i>
+                        GLOBALLY RECOGNIZED HABIBIE & AINUN STAMP DESIGNER
+                    </div>
+                    <h1 class="font-heading font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-tight lg:leading-none mb-8 text-gradient tracking-tighter uppercase mx-auto">
+                        Strategic Vision,<br>
+                        <span class="text-gray-900 dark:text-white">Visual <span class="text-brand-orange">Execution.</span></span>
+                    </h1>
+                    <!-- Updated Hero Description -->
+                    <p class="text-gray-600 dark:text-gray-400 text-lg sm:text-xl mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+                        I am <strong>Andi Suhud</strong>, the globally recognized official designer of the <strong>Habibie & Ainun commemorative postage stamp</strong>. I help institutions, corporations, and creators translate complex ideas into strong visual identities, impactful programs, and compelling presentations.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <a href="#contact" class="w-full sm:w-auto px-10 py-4 bg-brand-orange text-black font-bold rounded-full hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all transform hover:-translate-y-1 text-center flex items-center justify-center gap-2">
+                            Let's Collaborate <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#services" class="w-full sm:w-auto px-10 py-4 bg-transparent border border-gray-400 dark:border-gray-600 text-gray-900 dark:text-white font-medium rounded-full hover:border-brand-orange hover:text-brand-orange dark:hover:border-brand-orange dark:hover:text-brand-orange transition-all text-center">
+                            View Services
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-gray-100 dark:bg-brand-card transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-extrabold text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white uppercase tracking-tight">Areas of Expertise</h2>
+                <div class="w-24 h-1 bg-brand-orange mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">Comprehensive solutions for your visual communication and strategic needs.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white dark:bg-brand-dark p-8 border border-gray-200 dark:border-white/5 hover:border-brand-orange/50 dark:hover:border-brand-orange/50 transition-all duration-300 group hover:-translate-y-2 rounded-xl sm:rounded-none shadow-sm dark:shadow-none">
+                    <div class="w-16 h-16 bg-brand-orange/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-orange transition-colors">
+                        <i class="fas fa-pen-nib text-3xl text-brand-orange group-hover:text-white dark:group-hover:text-black transition-colors"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl mb-4 text-gray-900 dark:text-white">Graphic Design</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                        Creating strong visual identities. From corporate logo design and specific event logos to professional promotional visual assets to enhance your brand credibility.
+                    </p>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white dark:bg-brand-dark p-8 border border-gray-200 dark:border-white/5 hover:border-brand-orange/50 dark:hover:border-brand-orange/50 transition-all duration-300 group hover:-translate-y-2 rounded-xl sm:rounded-none shadow-sm dark:shadow-none">
+                    <div class="w-16 h-16 bg-brand-orange/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-orange transition-colors">
+                        <i class="fas fa-lightbulb text-3xl text-brand-orange group-hover:text-white dark:group-hover:text-black transition-colors"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl mb-4 text-gray-900 dark:text-white">Program Consultant</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                        Strategic mentoring for creative economy players, institutions, and SMEs. Helping to design activations, manage events, and build effective collaborations and partnerships.
+                    </p>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="bg-white dark:bg-brand-dark p-8 border border-gray-200 dark:border-white/5 hover:border-brand-orange/50 dark:hover:border-brand-orange/50 transition-all duration-300 group hover:-translate-y-2 rounded-xl sm:rounded-none shadow-sm dark:shadow-none">
+                    <div class="w-16 h-16 bg-brand-orange/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-orange transition-colors">
+                        <i class="fas fa-desktop text-3xl text-brand-orange group-hover:text-white dark:group-hover:text-black transition-colors"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl mb-4 text-gray-900 dark:text-white">Visual Comms</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                        Designing high-level presentation materials. Specializing in creating business pitch decks and presentation slides that are structured, persuasive, and professionally standardized.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white dark:bg-brand-dark relative overflow-hidden transition-colors duration-300">
+        <!-- Abstract background elements -->
+        <div class="absolute right-0 bottom-0 w-1/2 h-1/2 bg-gradient-to-tl from-brand-orange/10 dark:from-brand-orange/5 to-transparent -z-10 pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-heading font-extrabold text-4xl md:text-5xl mb-8 text-gray-900 dark:text-white uppercase tracking-tight">My Approach</h2>
+            
+            <p class="text-gray-700 dark:text-gray-300 text-lg md:text-xl leading-relaxed mb-8 font-light">
+                Bringing world-class standards to every project, my work gained international recognition when I was commissioned as the official designer for the historical <strong>Habibie & Ainun stamp</strong>. 
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 text-lg md:text-xl leading-relaxed mb-12 font-light">
+                For me, design is not just aesthetics, but a strategic tool for problem-solving. I combine <span class="text-brand-orange font-medium">analytical thinking</span> with <span class="text-brand-orange font-medium">creative execution</span> to ensure every piece of work not only looks beautiful but also hits the target and effectively communicates your message to the audience.
+            </p>
+
+            <a href="https://s.id/andisuhud" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-5 bg-gray-900 text-white dark:bg-white dark:text-black font-heading font-bold text-lg rounded-none hover:bg-brand-orange hover:text-white dark:hover:bg-brand-orange dark:hover:text-white transition-all duration-300 border-2 border-gray-900 dark:border-white hover:border-brand-orange dark:hover:border-brand-orange group">
+                More About Me 
+                <i class="fas fa-external-link-alt group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-gray-50 dark:bg-brand-card border-t border-gray-200 dark:border-white/5 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-extrabold text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white uppercase tracking-tight">Start a Conversation</h2>
+                <p class="text-gray-600 dark:text-gray-400 text-lg">Ready to bring your project to life? Contact me directly.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- WhatsApp Button -->
+                <a href="https://wa.me/628129191154" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-8 bg-white dark:bg-brand-dark border border-gray-200 dark:border-white/10 hover:border-[#25D366] dark:hover:border-[#25D366] group transition-all rounded-xl shadow-sm hover:shadow-md dark:shadow-none">
+                    <i class="fab fa-whatsapp text-5xl text-gray-400 dark:text-gray-500 group-hover:text-[#25D366] dark:group-hover:text-[#25D366] mb-4 transition-colors"></i>
+                    <span class="font-heading font-bold text-xl text-gray-900 dark:text-white mb-2">WhatsApp</span>
+                    <span class="text-gray-500 dark:text-gray-400 text-sm text-center">Direct chat for quick response</span>
+                </a>
+
+                <!-- Email Button -->
+                <a href="mailto:andisuhud@gmail.com" class="flex flex-col items-center justify-center p-8 bg-white dark:bg-brand-dark border border-gray-200 dark:border-white/10 hover:border-brand-orange dark:hover:border-brand-orange group transition-all rounded-xl shadow-sm hover:shadow-md dark:shadow-none">
+                    <i class="far fa-envelope text-5xl text-gray-400 dark:text-gray-500 group-hover:text-brand-orange dark:group-hover:text-brand-orange mb-4 transition-colors"></i>
+                    <span class="font-heading font-bold text-xl text-gray-900 dark:text-white mb-2">Email</span>
+                    <span class="text-gray-500 dark:text-gray-400 text-sm text-center">andisuhud@gmail.com</span>
+                </a>
+
+                <!-- Social Media Button -->
+                <a href="https://instagram.com/andisuhud" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-8 bg-white dark:bg-brand-dark border border-gray-200 dark:border-white/10 hover:border-[#E1306C] dark:hover:border-[#E1306C] group transition-all rounded-xl shadow-sm hover:shadow-md dark:shadow-none">
+                    <i class="fab fa-instagram text-5xl text-gray-400 dark:text-gray-500 group-hover:text-[#E1306C] dark:group-hover:text-[#E1306C] mb-4 transition-colors"></i>
+                    <span class="font-heading font-bold text-xl text-gray-900 dark:text-white mb-2">Instagram</span>
+                    <span class="text-gray-500 dark:text-gray-400 text-sm text-center">@andisuhud</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white dark:bg-brand-dark py-8 border-t border-gray-200 dark:border-white/10 text-center transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <h3 class="font-heading font-bold text-2xl text-gray-300 dark:text-white/30 mb-4 tracking-tighter uppercase">ANDI SUHUD</h3>
+            <p class="text-gray-500 dark:text-gray-500 text-sm">
+                &copy; <span id="year"></span> Andi Suhud. All rights reserved. <br class="sm:hidden"> Professional Digital Portfolio.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // MENGATASI MASALAH KLIK: Bypass aturan keamanan iframe pada pratinjau dengan JS Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href').substring(1);
+                if (!targetId) return; // Abaikan jika hanya '#'
+                
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    e.preventDefault(); // Cegah fungsi bawaan HTML agar tidak diblokir
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile Menu Logic
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')){
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Navbar shadow on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Initial icon state setup
+        if (document.documentElement.classList.contains('dark')) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            // Toggle icons inside button
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // If a theme is explicitly set in localStorage
+            if (localStorage.theme) {
+                if (localStorage.theme === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                }
+            // If no theme is set, fall back to OS preference checking
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+            }
+        });
+
+        // Mosaic Generation Logic
+        function generateMosaic() {
+            const container = document.getElementById('mosaic-container');
+            if (!container) return;
+            
+            // Bersihkan container saat resize layar
+            container.innerHTML = '';
+            
+            // Hitung secara dinamis berapa foto yang dibutuhkan untuk menutupi layar
+            const itemSize = 62; // 60px lebar foto + 2px jarak (gap)
+            const cols = Math.ceil(window.innerWidth / itemSize);
+            const rows = Math.ceil(window.innerHeight / itemSize);
+            
+            // Tambahkan ekstra padding untuk memastikan tidak ada ruang kosong di pinggir
+            const totalItems = (cols + 1) * (rows + 1); 
+            
+            // URL dasar untuk placeholder gambar
+            const baseImageUrl = "https://picsum.photos/120/120?random=";
+
+            // Menggunakan DocumentFragment agar render DOM lebih cepat & ringan
+            const fragment = document.createDocumentFragment();
+
+            for (let i = 0; i < totalItems; i++) {
+                const item = document.createElement('div');
+                item.classList.add('mosaic-item');
+                item.style.backgroundImage = `url('${baseImageUrl}${i}')`;
+                fragment.appendChild(item);
+            }
+            
+            container.appendChild(fragment);
+        }
+
+        // Jalankan saat pertama kali website diload
+        window.addEventListener('load', generateMosaic);
+        
+        // Sesuaikan jumlah foto kembali jika ukuran jendela/layar diubah
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(generateMosaic, 300); // Debounce agar tidak lag
+        });
+
+    </script>
+</body>
+</html>
